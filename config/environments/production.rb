@@ -77,4 +77,8 @@ Moviedatabase::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Disables pluralization (application is based on db, which doesn't follow the rails convention of pluralization)
+  # Example: the table with movies is called 'movie' instead of 'movies'
+  ActiveRecord::Base.pluralize_table_names = false
 end

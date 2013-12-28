@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "classification", ["genre_id"], name: "genre_id", using: :btree
 
   create_table "comment", id: false, force: true do |t|
-    t.integer   "user_id",  null: false
-    t.integer   "movie_id", null: false
-    t.timestamp "time",     null: false
-    t.text      "content"
+    t.integer  "user_id",  null: false
+    t.integer  "movie_id", null: false
+    t.datetime "time",     null: false
+    t.text     "content"
   end
 
   add_index "comment", ["movie_id"], name: "movie_id", using: :btree
@@ -55,11 +55,11 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "loan", primary_key: "loa_id", force: true do |t|
-    t.timestamp "borrow_date",     null: false
-    t.datetime  "sup_return_date", null: false
-    t.datetime  "return_date"
-    t.integer   "wis_id"
-    t.integer   "med_id"
+    t.datetime "borrow_date",     null: false
+    t.datetime "sup_return_date", null: false
+    t.datetime "return_date"
+    t.integer  "wis_id"
+    t.integer  "med_id"
   end
 
   add_index "loan", ["med_id"], name: "med_id", using: :btree

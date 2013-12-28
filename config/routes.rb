@@ -1,11 +1,7 @@
 Moviedatabase::Application.routes.draw do
 
-  resources :movie  # sets the model for the CRUD operations
-
-
-
-
-
+  root to: 'static#index'
+  resources :movies
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

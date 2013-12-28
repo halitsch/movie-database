@@ -45,5 +45,19 @@
   <%= @movie.ageRestriction %>
 </p>
 
+<p>
+  <strong>Comments to this movie (example of join)</strong>
+  <% @comments.each do |c| %>
+  <p>
+    User id: <%= c.user_id %>
+  </p>
+  <p>
+    Comment: <%= c.content %>
+  </p>
+  
+    
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

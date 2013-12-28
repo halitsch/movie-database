@@ -26,4 +26,8 @@ Moviedatabase::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Disables pluralization (application is based on db, which doesn't follow the rails convention of pluralization)
+  # Example: the table with movies is called 'movie' instead of 'movies'
+  ActiveRecord::Base.pluralize_table_names = false
 end

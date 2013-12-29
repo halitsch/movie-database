@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
-    @comments = Comment.find(:all, :include => :movie)
+    @comments = @movie.comment
   end
 
   # GET /movies/new

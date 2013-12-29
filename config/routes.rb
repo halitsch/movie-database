@@ -1,5 +1,7 @@
 Moviedatabase::Application.routes.draw do
 
+  resources :genres
+
   resources :comments
 
   root to: 'static#index'

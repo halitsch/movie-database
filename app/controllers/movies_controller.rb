@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @comments = @movie.comment
+    @genres = @movie.genre
   end
 
   # GET /movies/new

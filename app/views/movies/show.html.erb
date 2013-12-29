@@ -46,18 +46,26 @@
 </p>
 
 <p>
-  <strong>Comments to this movie (example of join)</strong>
+  <strong>Comments to this movie (from here on, are examples of joins):</strong>
   <% @comments.each do |c| %>
-  <p>
-    User id: <%= c.user_id %>
-  </p>
-  <p>
-    Comment: <%= c.content %>
-  </p>
-  
-    
+    <p>
+      User id: <%= c.user_id %>
+    </p>
+    <p>
+      Comment: <%= c.content %>
+    </p>
   <% end %>
 </p>
+
+<p>
+  <strong>Movie genres:</strong>
+  <% @genres.each do |g| %>
+    <p>
+      <%= g.name + " " %>
+    </p>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

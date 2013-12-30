@@ -42,3 +42,4 @@ config/initializers/secret_token.rb
 >>>>>>> adda4c7b7e153af2ac16e70b7bf940be85921208
 =======
 >>>>>>> adda4c7b7e153af2ac16e70b7bf940be85921208
+/config/database.yml

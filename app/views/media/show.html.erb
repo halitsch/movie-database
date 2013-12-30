@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Med:</strong>
+  <%= @medium.med_id %>
+</p>
+
+<p>
+  <strong>Med type:</strong>
+  <%= @medium.med_type %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @medium.movie_id %>
+</p>
+
+<p>
+  <strong>Medium set:</strong>
+  <%= @medium.medium_set_id %>
+</p>
+
+<%= link_to 'Edit', edit_medium_path(@medium) %> |
+<%= link_to 'Back', media_path %>

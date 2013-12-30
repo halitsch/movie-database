@@ -6,4 +6,5 @@ class Movie < ActiveRecord::Base
 	has_many :user, through: :rating
 	has_many :contribution, foreign_key: :movie_id
 	has_many :movie_participant, through: :contribution
+	has_many :medium
 end

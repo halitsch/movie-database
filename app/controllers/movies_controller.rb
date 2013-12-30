@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :participation]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :participation, :moviemedia]
 
   # GET /movies
   # GET /movies.json
@@ -31,6 +31,10 @@ class MoviesController < ApplicationController
     contribution = @movie.contribution
     participants = @movie.movie_participant
     @movie_participants = contribution.zip(participants)
+  end
+
+  def moviemedia
+    @media = @movie.medium
   end
 
   # POST /movies

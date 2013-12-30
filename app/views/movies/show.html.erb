@@ -59,9 +59,23 @@
 
 <p>
   <strong>Movie genres:</strong>
-  <% @genres.each do |g| %>
     <p>
-      <%= g.name + " " %>
+      <% @genres.each do |g| %>
+        <%= g.name %>
+      <% end %>
+    </p>
+  
+</p>
+
+<p>
+  <strong>Movie ratings:</strong>
+
+  <% @user_ratings.each do |u, r| %>
+    <p>
+      First name: <%= u.first_name %><br />
+      Last name: <%= u.last_name %><br />
+      User name: <%= u.user_name %><br />
+      Rating: <%= r.ratingValue %><br />
     </p>
   <% end %>
 </p>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  user_name: 
+  first_name: 
+  last_name: 
+  gender: 
+  dob: 2013-12-29
+  email: 
+  phone: 
+  address: 
+
+two:
+  user_id: 1
+  user_name: 
+  first_name: 
+  last_name: 
+  gender: 
+  dob: 2013-12-29
+  email: 
+  phone: 
+  address: 

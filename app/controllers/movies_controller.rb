@@ -12,6 +12,10 @@ class MoviesController < ApplicationController
   def show
     @comments = @movie.comment
     @genres = @movie.genre
+    #2 dimensional array of users and the users rating
+    @ratings = @movie.rating
+    @user_for_rating = @movie.user
+    @user_ratings = @user_for_rating.zip(@ratings)
   end
 
   # GET /movies/new

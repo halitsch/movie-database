@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :participation]
 
   # GET /movies
   # GET /movies.json
@@ -13,9 +13,9 @@ class MoviesController < ApplicationController
     @comments = @movie.comment
     @genres = @movie.genre
     #2 dimensional array of users and the users rating
-    @ratings = @movie.rating
-    @user_for_rating = @movie.user
-    @user_ratings = @user_for_rating.zip(@ratings)
+    ratings = @movie.rating
+    user_for_rating = @movie.user
+    @user_ratings = user_for_rating.zip(ratings)
   end
 
   # GET /movies/new
@@ -25,6 +25,12 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def edit
+  end
+  
+  def participation
+    contribution = @movie.contribution
+    participants = @movie.movie_participant
+    @movie_participants = contribution.zip(participants)
   end
 
   # POST /movies

@@ -1,0 +1,38 @@
+a<h1>Listing movie_participants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Participant</th>
+      <th>Name</th>
+      <th>Birthplace</th>
+      <th>Birthdate</th>
+      <th>Actor</th>
+      <th>Writer</th>
+      <th>Director</th>
+      <th>Composer</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movie_participants.each do |contribution, movie_participant| %>
+      <tr>
+        <td><%= movie_participant.participant_id %></td>
+        <td><%= movie_participant.name %></td>
+        <td><%= movie_participant.birthplace %></td>
+        <td><%= movie_participant.birthdate %></td>
+        <td><%= (contribution.is_actor ? "&#10004;".html_safe : "") %></td>
+        <td><%= (contribution.is_writer ? "&#10004;".html_safe : "") %></td>
+        <td><%= (contribution.is_director ? "&#10004;".html_safe : "") %></td>
+        <td><%= (contribution.is_composer ? "&#10004;".html_safe : "") %></td>
+        <td><%= link_to 'Show', movie_participant %></td>
+        <td><%= link_to 'Edit', edit_movie_participant_path(movie_participant) %></td>
+        <td><%= link_to 'Destroy', movie_participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Movie participant', new_movie_participant_path %>

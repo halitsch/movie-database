@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Participant:</strong>
+  <%= @movie_participant.participant_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @movie_participant.name %>
+</p>
+
+<p>
+  <strong>Birthplace:</strong>
+  <%= @movie_participant.birthplace %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= @movie_participant.birthdate %>
+</p>
+
+<%= link_to 'Edit', edit_movie_participant_path(@movie_participant) %> |
+<%= link_to 'Back', movie_participants_path %>

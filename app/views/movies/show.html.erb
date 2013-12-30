@@ -69,7 +69,6 @@
 
 <p>
   <strong>Movie ratings:</strong>
-
   <% @user_ratings.each do |u, r| %>
     <p>
       First name: <%= u.first_name %><br />
@@ -79,7 +78,6 @@
     </p>
   <% end %>
 </p>
-
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

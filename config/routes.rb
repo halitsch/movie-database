@@ -1,10 +1,14 @@
 Moviedatabase::Application.routes.draw do
 
+  resources :movie_participants
+
   resources :users
 
   resources :genres
 
   resources :comments
+
+  get 'movie/participation/:id' => 'movies#participation', as: 'participant'
 
   root to: 'static#index'
   resources :movies

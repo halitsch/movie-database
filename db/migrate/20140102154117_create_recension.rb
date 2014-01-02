@@ -1,3 +1,4 @@
+
 class CreateRecension < ActiveRecord::Migration
   def change
   	execute "ALTER TABLE `recension` DROP FOREIGN KEY recension_ibfk_1"

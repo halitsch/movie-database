@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loa_id: 1
+  borrow_date: 2014-01-02 20:26:01
+  sup_return_date: 2014-01-02 20:26:01
+  return_date: 2014-01-02 20:26:01
+  wis_id: 1
+  med_id: 1
+
+two:
+  loa_id: 1
+  borrow_date: 2014-01-02 20:26:01
+  sup_return_date: 2014-01-02 20:26:01
+  return_date: 2014-01-02 20:26:01
+  wis_id: 1
+  med_id: 1

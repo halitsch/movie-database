@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wis_id: 1
+  wis_date: 2014-01-02 20:27:20
+  user_id: 1
+  movie_id: 1
+
+two:
+  wis_id: 1
+  wis_date: 2014-01-02 20:27:20
+  user_id: 1
+  movie_id: 1

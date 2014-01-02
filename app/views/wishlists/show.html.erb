@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wis:</strong>
+  <%= @wishlist.wis_id %>
+</p>
+
+<p>
+  <strong>Wis date:</strong>
+  <%= @wishlist.wis_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @wishlist.user_id %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @wishlist.movie_id %>
+</p>
+
+<%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
+<%= link_to 'Back', wishlists_path %>

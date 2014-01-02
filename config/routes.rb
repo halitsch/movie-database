@@ -1,5 +1,11 @@
 Moviedatabase::Application.routes.draw do
 
+  resources :movies
+
+  resources :wishlists
+
+  resources :loans
+
   resources :ratings
 
   resources :websites
@@ -22,7 +28,6 @@ Moviedatabase::Application.routes.draw do
   get 'movie/websites/:id' => 'movies#websites', as: 'movie_websites'
 
   root to: 'static#index'
-  resources :movies
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

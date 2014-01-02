@@ -1,5 +1,7 @@
 Moviedatabase::Application.routes.draw do
 
+  resources :recensions
+
   resources :media
 
   resources :movie_participants
@@ -12,6 +14,7 @@ Moviedatabase::Application.routes.draw do
 
   get 'movie/participation/:id' => 'movies#participation', as: 'participant'
   get 'movie/media/:id' => 'movies#moviemedia', as: 'moviemedium'
+  get 'movie/recension/:id' => 'movies#movie_recensions', as: 'movie_recensions'
 
   root to: 'static#index'
   resources :movies

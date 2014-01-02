@@ -25,6 +25,7 @@
         <td><%= movie.budget %></td>
         <td><%= movie.revenue %></td>
         <td><%= movie.ageRestriction %></td>
+        <td><%= link_to 'Recensions', movie_recensions_path(movie) %></td>
         <td><%= link_to 'Participants', participant_path(movie) %></td>
         <td><%= link_to 'Media', moviemedium_path(movie) %></td>
         <td><%= link_to 'Show', movie %></td>

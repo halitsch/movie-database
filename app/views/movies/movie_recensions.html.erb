@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>Listing recensions</h2></div>
+<table class="table tablesorter">
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Website</th>
+      <th>Time</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recensions.each do |recension| %>
+      <tr>
+        <td><%= recension.movie_id %></td>
+        <td><%= recension.website_id %></td>
+        <td><%= recension.time %></td>
+        <td><%= recension.content %></td>
+        <td><%= link_to 'Show', recension %></td>
+        <td><%= link_to 'Edit', edit_recension_path(recension) %></td>
+        <td><%= link_to 'Destroy', recension, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recension', new_recension_path %>

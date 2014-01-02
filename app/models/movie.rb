@@ -7,4 +7,7 @@ class Movie < ActiveRecord::Base
 	has_many :contribution, foreign_key: :movie_id
 	has_many :movie_participant, through: :contribution
 	has_many :medium
+
+	has_many :recension, foreign_key: :movie_id
+	has_many :website, through: :recension
 end

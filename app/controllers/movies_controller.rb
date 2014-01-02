@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :participation, :moviemedia]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :participation, :moviemedia, :movie_recensions]
 
   # GET /movies
   # GET /movies.json
@@ -35,6 +35,11 @@ class MoviesController < ApplicationController
 
   def moviemedia
     @media = @movie.medium
+  end
+
+  def movie_recensions
+    @recensions = @movie.recension
+    logger.debug @recension.inspect
   end
 
   # POST /movies

@@ -19,7 +19,7 @@
 var ready;
 ready = function() {
 
-	$("table").tablesorter();
+  $("table").tablesorter();
 
 };
 

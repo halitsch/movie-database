@@ -6,6 +6,9 @@ gem 'rails', '4.0.2'
 # Use mysql2 as the database for Active Record
 gem 'mysql2'
 
+# Workaround for composite keys
+gem "composite_primary_keys", "~> 6.0.1"
+
 # Gem for upload on Heroku
 gem 'rails_12factor', group: :production
 

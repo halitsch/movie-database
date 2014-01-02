@@ -435,7 +435,7 @@ h6 .small,
 h1,
 h2,
 h3 {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -471,7 +471,7 @@ h1,
 
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 26px;
 }
 
 h3,
@@ -5592,6 +5592,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel {
+  margin-top: 20px;
   margin-bottom: 20px;
   background-color: #ffffff;
   border: 1px solid transparent;

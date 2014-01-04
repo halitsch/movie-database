@@ -7,8 +7,14 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
+  #returns pair of movie and average rating for that movie
   def best_rated
     @movies = Movie.joins(:rating).group("rating.movie_id, movie.title").average("rating.ratingValue")
+  end
+
+  #returns pair of genre name and count of movies of that genre
+  def count
+    @genres = Movie.find_by_sql('select g.name, count(*) as count from genre g left join classification c on g.genre_id = c.genre_id left join movie m on c.movie_id = m.movie_id group by g.name')
   end
 
   # GET /movies/1

@@ -15,6 +15,8 @@ Moviedatabase::Application.routes.draw do
       get 'wishes'
       get 'loans'
     end
+    get 'wishes_count', on: :collection
+    get 'loans_count', on: :collection
   end
 
   #get 'user/wishes/:id' => 'users#user_wishes', as: 'user_wishes'
@@ -39,7 +41,9 @@ Moviedatabase::Application.routes.draw do
 
   resources :movie_participants
 
-  resources :genres
+  resources :genres do
+    get 'count', on: :collection
+  end
 
   resources :comments
 

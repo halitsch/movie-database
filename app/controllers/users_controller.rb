@@ -12,6 +12,15 @@ class UsersController < ApplicationController
   def show
   end
 
+  # Retuns array of user details and aggregated number of wishes
+  def wishes_count
+    @users = User.joins(:wishlist).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
+  end
+
+  def loans_count
+    @users = User.joins(:loan).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
+  end
+
   # GET /users/new
   def new
     @user = User.new

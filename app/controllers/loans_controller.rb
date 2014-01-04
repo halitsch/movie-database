@@ -4,7 +4,11 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-    @loans = Loan.all
+    if params[:filter] == 'after'
+      @loans = Loan.where('return_date is null and sup_return_date < ?', Time.now) 
+    else
+      @loans = Loan.all
+    end
   end
 
   # GET /loans/1

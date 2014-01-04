@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>Listing users</h2></div>
+<table class="table tablesorter">
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th># of loans</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.user_name %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

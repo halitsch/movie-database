@@ -13,7 +13,16 @@
 //= require bootstrap
 //= require jquery
 //= require jquery_ujs
-//= require jquery.tablesorter.min
-//= require custom
+//= require jquery-tablesorter
 //= require turbolinks
 //= require_tree .
+
+var ready;
+ready = function() {
+
+  $("table").tablesorter();
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

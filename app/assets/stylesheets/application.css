@@ -10,5 +10,6 @@
  *
  *= require bootstrap
  *= require_self
+ *= require jquery-tablesorter/theme.blue
  *= require_tree .
  */

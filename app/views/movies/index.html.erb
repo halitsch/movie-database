@@ -27,7 +27,7 @@
         <td><%= movie.ageRestriction %></td>
         <td><%= link_to 'Recensions', recensions_movie_path(movie) %></td>
         <td><%= link_to 'Participants', participations_movie_path(movie) %></td>
-        <td><%= link_to 'Media', media_movie_path(movie) %></td>
+        <td><%= link_to 'Media', movie_media_path(movie) %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>

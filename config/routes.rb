@@ -3,12 +3,14 @@ Moviedatabase::Application.routes.draw do
   resources :movies do
     member do
       get 'participations'
-      get 'media'
       get 'recensions'
       get 'websites'
     end
     get 'best_rated', on: :collection
+    resources :media
   end
+  
+  resources :media
 
   resources :users do
     member do
@@ -19,14 +21,6 @@ Moviedatabase::Application.routes.draw do
     get 'loans_count', on: :collection
   end
 
-  #get 'user/wishes/:id' => 'users#user_wishes', as: 'user_wishes'
-  #get 'user/loans/:id' => 'users#user_loans', as: 'user_loans'
-
-  #get 'movie/participation/:id' => 'movies#participation', as: 'participant'
-  #get 'movie/media/:id' => 'movies#moviemedia', as: 'moviemedium'
-  #get 'movie/recension/:id' => 'movies#movie_recensions', as: 'movie_recensions'
-  #get 'movie/websites/:id' => 'movies#websites', as: 'movie_websites'
-
   resources :wishlists
 
   resources :loans
@@ -36,8 +30,6 @@ Moviedatabase::Application.routes.draw do
   resources :websites
 
   resources :recensions
-
-  resources :media
 
   resources :movie_participants
 

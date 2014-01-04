@@ -27,4 +27,8 @@
 
 <br>
 
+<% if params[:movie_id].blank? %>
 <%= link_to 'New Medium', new_medium_path %>
+<% else %>
+<%= link_to 'New Medium', new_movie_medium_path %>
+<% end %>

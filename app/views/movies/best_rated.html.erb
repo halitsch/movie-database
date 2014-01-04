@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>The list of best rated movies!</h2></div>
+<table class="table tablesorter">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Average rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.first %></td>
+        <td><%= movie.second %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

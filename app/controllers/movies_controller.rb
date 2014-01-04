@@ -1,10 +1,14 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :participation, :moviemedia, :movie_recensions, :websites]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :participations, :media, :recensions, :websites]
 
   # GET /movies
   # GET /movies.json
   def index
     @movies = Movie.all
+  end
+
+  def best_rated
+    @movies = Movie.joins(:rating).group("rating.movie_id, movie.title").average("rating.ratingValue")
   end
 
   # GET /movies/1
@@ -27,19 +31,15 @@ class MoviesController < ApplicationController
   def edit
   end
   
-  def participation
+  def participations
     contribution = @movie.contribution
     participants = @movie.movie_participant
     @movie_participants = contribution.zip(participants)
   end
 
-  def moviemedia
-    @media = @movie.medium
-  end
 
-  def movie_recensions
+  def recensions
     @recensions = @movie.recension
-    logger.debug @recension.inspect
   end
 
   def websites

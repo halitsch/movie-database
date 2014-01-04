@@ -1,6 +1,29 @@
 Moviedatabase::Application.routes.draw do
 
-  resources :movies
+  resources :movies do
+    member do
+      get 'participations'
+      get 'media'
+      get 'recensions'
+      get 'websites'
+    end
+    get 'best_rated', on: :collection
+  end
+
+  resources :users do
+    member do
+      get 'wishes'
+      get 'loans'
+    end
+  end
+
+  #get 'user/wishes/:id' => 'users#user_wishes', as: 'user_wishes'
+  #get 'user/loans/:id' => 'users#user_loans', as: 'user_loans'
+
+  #get 'movie/participation/:id' => 'movies#participation', as: 'participant'
+  #get 'movie/media/:id' => 'movies#moviemedia', as: 'moviemedium'
+  #get 'movie/recension/:id' => 'movies#movie_recensions', as: 'movie_recensions'
+  #get 'movie/websites/:id' => 'movies#websites', as: 'movie_websites'
 
   resources :wishlists
 
@@ -16,16 +39,9 @@ Moviedatabase::Application.routes.draw do
 
   resources :movie_participants
 
-  resources :users
-
   resources :genres
 
   resources :comments
-
-  get 'movie/participation/:id' => 'movies#participation', as: 'participant'
-  get 'movie/media/:id' => 'movies#moviemedia', as: 'moviemedium'
-  get 'movie/recension/:id' => 'movies#movie_recensions', as: 'movie_recensions'
-  get 'movie/websites/:id' => 'movies#websites', as: 'movie_websites'
 
   root to: 'static#index'
 

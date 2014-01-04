@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>Listing wishlists</h2></div>
+<table class="table tablesorter">
+  <thead>
+    <tr>
+      <th>Wis</th>
+      <th>Wis date</th>
+      <th>User</th>
+      <th>Movie</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.wishlist.each do |wish| %>
+      <tr>
+        <td><%= wish.wis_id %></td>
+        <td><%= wish.wis_date %></td>
+        <td><%= wish.user_id %></td>
+        <td><%= wish.movie_id %></td>
+        <td><%= link_to 'Show', wish %></td>
+        <td><%= link_to 'Edit', edit_wishlist_path(wish) %></td>
+        <td><%= link_to 'Destroy', wish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wishlist', new_wishlist_path %>

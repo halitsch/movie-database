@@ -13,7 +13,6 @@
 //= require bootstrap
 //= require jquery
 //= require jquery_ujs
-//= require jquery-tablesorter
 //= require turbolinks
 //= require_tree .
 
@@ -25,4 +24,4 @@ ready = function() {
 };
 
 $(document).ready(ready);
-$(document).on('page:load', ready);
+$(document).on('page:load', ready);		

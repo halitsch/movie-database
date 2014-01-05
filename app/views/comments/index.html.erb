@@ -14,7 +14,7 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.user_id %></td>
-        <td><%= comment.movie_id %></td>
+        <td><%= comment.movie.title %></td>
         <td><%= comment.time %></td>
         <td><%= comment.content %></td>
         <td><%= link_to 'Show', comment %></td>

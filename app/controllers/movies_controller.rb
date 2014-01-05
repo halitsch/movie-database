@@ -9,7 +9,12 @@ class MoviesController < ApplicationController
 
   #returns pair of movie and average rating for that movie
   def best_rated
-    @movies = Movie.joins(:rating).select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').group("movie.movie_id")
+    if params[:genre].blank?
+      @movies = Movie.joins(:rating).select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').group("movie.movie_id")
+    else
+      @movies = Movie.joins(:classification).joins(:genre).where('genre.name = ?', params[:genre]).joins(:rating).select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').group("movie.movie_id")
+    end
+    @genre_names = Genre.all.select('name')
   end
 
   # GET /movies/1

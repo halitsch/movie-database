@@ -1,29 +1,43 @@
 <div class="panel panel-default">
 <div class="panel-heading"><h2>The list of best rated movies!</h2></div>
-<table class="table tablesorter">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Genre</th>
-      <th>Average rating</th>
-      <th>Number of ratings</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td>
-            <% movie.genre.each do |genre| %>
-            <%= genre.name %>
-            <% end %>
-        </td>
+  
+  <div class="row">
+    <div class="col-md-4" style="padding-left:20px">
+      <h3>Filter the movie by genre</h3>
+        <%= link_to 'All', best_rated_movies_path %><br />
+        <% @genre_names.each do |genre| %><td>
+          <%= link_to genre.name, best_rated_movies_path(genre: genre.name) %><br />
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <table class="table tablesorter">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Average rating</th>
+            <th>Number of ratings</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @movies.each do |movie| %>
+            <tr>
+              <td><%= movie.title %></td>
+              <td>
+                  <% movie.genre.each do |genre| %>
+                  <%= genre.name %>
+                  <% end %>
+              </td>
 
-        <td><%= movie.average %></td>
-        <td><%= movie.count %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <td><%= movie.average %></td>
+              <td><%= movie.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+

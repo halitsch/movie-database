@@ -22,8 +22,8 @@
         <td><%= movie.release_month %></td>
         <td><%= movie.release_year %></td>
         <td><%= movie.duration %></td>
-        <td><%= movie.budget %></td>
-        <td><%= movie.revenue %></td>
+        <td><%= number_with_delimiter(movie.budget) %></td>
+        <td><%= number_with_delimiter(movie.revenue) %></td>
         <td><%= movie.ageRestriction %></td>
         <td><%= link_to 'Recensions', recensions_movie_path(movie) %></td>
         <td><%= link_to 'Participants', participations_movie_path(movie) %></td>

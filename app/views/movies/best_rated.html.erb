@@ -5,14 +5,16 @@
     <tr>
       <th>Title</th>
       <th>Average rating</th>
+      <th>Number of ratings</th>
     </tr>
   </thead>
 
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= movie.first %></td>
-        <td><%= movie.second %></td>
+        <td><%= movie.title %></td>
+        <td><%= movie.average %></td>
+        <td><%= movie.count %></td>
       </tr>
     <% end %>
   </tbody>

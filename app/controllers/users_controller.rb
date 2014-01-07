@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :wishes, :loans]
 
+  # Retuns array of user details and aggregated number of wishes
+  def wishes_count
+    @users = User.joins(:wishlist).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
+  end
+
+  def loans_count
+    @users = User.joins(:loan).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
+  end
+  
   # GET /users
   # GET /users.json
   def index
@@ -10,15 +19,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-  end
-
-  # Retuns array of user details and aggregated number of wishes
-  def wishes_count
-    @users = User.joins(:wishlist).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
-  end
-
-  def loans_count
-    @users = User.joins(:loan).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
   end
 
   # GET /users/new

@@ -1,31 +1,33 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy, :participations, :media, :recensions, :websites]
 
+  def participations
+    contribution = @movie.contribution
+    participants = @movie.movie_participant
+    @movie_participants = contribution.zip(participants)
+  end
+
   # GET /movies
   # GET /movies.json
   def index
     @movies = Movie.all
   end
 
-  #returns pair of movie and average rating for that movie
-  def best_rated
-    if params[:genre].blank?
-      @movies = Movie.joins(:rating).select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').group("movie.movie_id")
-    else
-      @movies = Movie.joins(:classification).joins(:genre).where('genre.name = ?', params[:genre]).joins(:rating).select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').group("movie.movie_id")
-    end
-    @genre_names = Genre.all.select('name')
-  end
-
   # GET /movies/1
   # GET /movies/1.json
   def show
+    # variables for comments and genres to view
     @comments = @movie.comment
     @genres = @movie.genre
-    #2 dimensional array of users and the users rating
+    # 2 dimensional array of users and the users rating
     ratings = @movie.rating
     user_for_rating = @movie.user
     @user_ratings = user_for_rating.zip(ratings)
+
+    # variables of movie participants details and their contribution to the movie
+    contribution = @movie.contribution
+    participants = @movie.movie_participant
+    @movie_participants = contribution.zip(participants)
   end
 
   # GET /movies/new
@@ -37,21 +39,6 @@ class MoviesController < ApplicationController
   def edit
   end
   
-  def participations
-    contribution = @movie.contribution
-    participants = @movie.movie_participant
-    @movie_participants = contribution.zip(participants)
-  end
-
-
-  def recensions
-    @recensions = @movie.recension
-  end
-
-  def websites
-    @websites = @movie.website
-  end
-
   # POST /movies
   # POST /movies.json
   def create

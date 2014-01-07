@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>The list of genres which are included in the most loans</h2></div>
+
+<%= render 'genres_list' %>
+<%= @movies_count_and_genre.inspect %>
+    <div class="col-md-8">
+      <table class="table tablesorter">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @movies_count_and_genre.each do |key, value| %>
+            <tr>
+              <td><%= key %></td>
+              <td>
+                <% value[:genres].each do |genre|  %>
+                <%= genre.name %>
+                <% end  %>
+              </td>
+              <td><%= value[:count] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

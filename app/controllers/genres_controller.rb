@@ -17,12 +17,6 @@ class GenresController < ApplicationController
     @genre = Genre.new
   end
 
-  # Returns pair of genre name and count of movies of that genre
-  # It's in pure SQL and not active record approach because I had this query writen before. 
-  def count
-    @genres = Movie.find_by_sql('select g.name, count(*) as count from genre g left join classification c on g.genre_id = c.genre_id left join movie m on c.movie_id = m.movie_id group by g.name')
-  end
-
   # GET /genres/1/edit
   def edit
   end

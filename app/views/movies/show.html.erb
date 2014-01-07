@@ -27,12 +27,12 @@
 
 <p>
   <strong>Budget:</strong>
-  <%= @movie.budget %>
+  <%= number_with_delimiter(@movie.budget) %>
 </p>
 
 <p>
   <strong>Revenue:</strong>
-  <%= @movie.revenue %>
+  <%= number_with_delimiter(@movie.revenue) %>
 </p>
 
 <p>
@@ -67,8 +67,47 @@
   
 </p>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actor</th>
+      <th>Writer</th>
+      <th>Director</th>
+      <th>Composer</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movie_participants.each do |contribution, movie_participant| %>
+      <tr>
+        <td><%= movie_participant.name %></td>
+        <td><%= (contribution.is_actor ? "&#10004;".html_safe : "") %></td>
+        <td><%= (contribution.is_writer ? "&#10004;".html_safe : "") %></td>
+        <td><%= (contribution.is_director ? "&#10004;".html_safe : "") %></td>
+        <td><%= (contribution.is_composer ? "&#10004;".html_safe : "") %></td>
+        <td><%= link_to 'Show', movie_participant %></td>
+        <td><% link_to 'Edit', edit_movie_participant_path(movie_participant) %></td>
+        <td><% link_to 'Delete', movie_participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <p>
   <strong>Movie ratings:</strong>
+  <% @user_ratings.each do |u, r| %>
+    <p>
+      First name: <%= u.first_name %><br />
+      Last name: <%= u.last_name %><br />
+      User name: <%= u.user_name %><br />
+      Rating: <%= r.ratingValue %><br />
+    </p>
+  <% end %>
+</p>
+
+<p>
+  <strong>Movie pariticipation:</strong>
   <% @user_ratings.each do |u, r| %>
     <p>
       First name: <%= u.first_name %><br />

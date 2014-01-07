@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>The list of best rated movies!</h2></div>
+
+<%= render 'genres_list' %>
+
+    <div class="col-md-8">
+      <table class="table tablesorter">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Average rating</th>
+            <th>Number of ratings</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @movies.each do |movie| %>
+            <tr>
+              <td><%= movie.title %></td>
+              <td>
+                  <% movie.genre.each do |genre| %>
+                  <%= genre.name %>
+                  <% end %>
+              </td>
+              <td><%= movie.average %></td>
+              <td><%= movie.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

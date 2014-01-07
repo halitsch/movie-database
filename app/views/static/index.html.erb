@@ -3,12 +3,56 @@
         <h1>Marketing stuff!</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
         <p class="lead"><strong>Analytics:<strong><br /> 
-       	<%= link_to 'Best rated movies', best_rated_movies_path %></p>
-       	<%= link_to 'Count of movies by genre', count_genres_path %></p>
+       	<%= link_to 'Best rated movies', best_rated_analytics_path %></p>
+       	<%= link_to 'Count of movies by genre', movies_genres_count_analytics_path %></p>
         <%= link_to 'Users and number of wishes', wishes_count_users_path %></p>
         <%= link_to 'Users and number of loans', loans_count_users_path %></p>
         <%= link_to 'Loans after due date', loans_path(filter: :after) %></p>
         <!-- <p><a class="btn btn-lg btn-success" href="http://getbootstrap.com/examples/justified-nav/#" role="button">Get started today</a></p>-->
-        <br /><br />
+        <br />
         <%= image_tag('logo.png') %>
+        <br />
+
+
+        <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Average rating</th>
+            <th>Ratings count</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @movies.each do |movie| %>
+            <tr>
+              <td><%= movie.title %></td>
+              <td><%= movie.average %></td>
+              <td><%= movie.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Movie</th>
+          <th>Time</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= comment.user.first_name + ' "' + comment.user.user_name + '" ' + comment.user.last_name %></td>
+            <td><%= comment.movie.title %></td>
+            <td><%= comment.time %></td>
+            <td><%= comment.content %></td>
+            <td><%= link_to 'Show', comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
         </div>

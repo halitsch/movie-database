@@ -1,4 +1,4 @@
 class Recension < ActiveRecord::Base
-	belongs_to :recension
+	self.primary_keys = 'movie_id', 'website_id'
 	belongs_to :website
 end

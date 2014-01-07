@@ -9,6 +9,6 @@ class Movie < ActiveRecord::Base
 	has_many :medium, foreign_key: :movie_id
 	has_many :recension, foreign_key: :movie_id
 	has_many :website, through: :recension
-	has_many :wishlist, foreign_key: :movie_id
+	has_many :wishlist
 	has_many :loan, through: :wishlist
 end

@@ -6,7 +6,6 @@ Moviedatabase::Application.routes.draw do
       get 'recensions'
       get 'websites'
     end
-    get 'best_rated', on: :collection
     resources :media
   end
   
@@ -15,10 +14,18 @@ Moviedatabase::Application.routes.draw do
   resources :users do
     member do
       get 'wishes'
-      get 'loans'
+      get 'loans_count'
     end
     get 'wishes_count', on: :collection
     get 'loans_count', on: :collection
+  end
+
+  resources :analytics, only: [:index, :best_rated, :movie_genre_count] do
+    collection do
+      get 'best_rated'
+      get 'movies_genres_count'
+      get 'genre_loans'
+    end
   end
 
   resources :wishlists
@@ -34,7 +41,7 @@ Moviedatabase::Application.routes.draw do
   resources :movie_participants
 
   resources :genres do
-    get 'count', on: :collection
+    
   end
 
   resources :comments

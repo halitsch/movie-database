@@ -25,6 +25,8 @@ Moviedatabase::Application.routes.draw do
       get 'best_rated'
       get 'movies_genres_count'
       get 'genre_loans'
+      get 'most_commented'
+      get 'most_active'
     end
   end
 

@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>The most active users</h2></div>
+
+<div class="row">
+  <div class="col-md-6" style="margin-left: 20px;">
+    <h3>Users with the most comments</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Number of comments</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users_comments.each do |user| %>
+          <tr>
+            <td><%= link_to user.first_name + ' "' + user.user_name + '" ' + user.last_name, user %></td>
+            <td><%= user.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6" style="margin-left: -20px;">
+    <h3>Users with the most ratings</h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Number of ratings</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users_ratings.each do |user| %>
+          <tr>
+            <td><%= link_to user.first_name + ' "' + user.user_name + '" ' + user.last_name, user %></td>
+            <td><%= user.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2>Listing genres</h2></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Movie title</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= link_to movie.title, movie %></td>
+        <td><%= movie.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -6,6 +6,6 @@ class StaticController < ApplicationController
 			 order('average DESC').
 			 limit('10')
 
-	@comments = Comment.order('comment.time DESC').limit(10)
+	@comments = Comment.order('comment.time DESC').limit(5)
   end
 end

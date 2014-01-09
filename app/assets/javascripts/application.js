@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jsapi
 //= require chartkick
 //= require jquery.tablesorter.min.js
 //= require jquery.tablesorter.pager.js
@@ -22,7 +21,7 @@
 
     var ready;
     ready = function() {
-
+ 
       $("table").tablesorter();
 
     };

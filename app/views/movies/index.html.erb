@@ -1,42 +1,42 @@
 <div class="panel panel-default">
-<div class="panel-heading"><h2>Listing movies</h2></div>
-<table class="table tablesorter">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Release day</th>
-      <th>Release month</th>
-      <th>Release year</th>
-      <th>Duration</th>
-      <th>Budget</th>
-      <th>Revenue</th>
-      <th>Agerestriction</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
+  <div class="panel-heading"><h2>Listing movies</h2></div>
+  <table class="table tablesorter">
+    <thead>
       <tr>
-        <td><%= link_to movie.title, movie_path(movie) %></td>
-        <td><%= movie.release_day %></td>
-        <td><%= movie.release_month %></td>
-        <td><%= movie.release_year %></td>
-        <td><%= movie.duration %></td>
-        <td><%= number_with_delimiter(movie.budget) %></td>
-        <td><%= number_with_delimiter(movie.revenue) %></td>
-        <td><%= movie.ageRestriction %></td>
-        <td><%= link_to 'Recensions', recensions_movie_path(movie) %></td>
-        <td><%= link_to 'Participants', participations_movie_path(movie) %></td>
-        <td><%= link_to 'Media', movie_media_path(movie) %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= sortable :title %></th>
+        <th><%= sortable :release_day %></th>
+        <th><%= sortable :release_month %></th>
+        <th><%= sortable :release_year %></th>
+        <th><%= sortable :duration %></th>
+        <th><%= sortable :budget %></th>
+        <th><%= sortable :revenue %></th>
+        <th><%= sortable :agerestriction %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= link_to movie.title, movie_path(movie) %></td>
+          <td><%= movie.release_day %></td>
+          <td><%= movie.release_month %></td>
+          <td><%= movie.release_year %></td>
+          <td><%= movie.duration %></td>
+          <td><%= number_with_delimiter(movie.budget) %></td>
+          <td><%= number_with_delimiter(movie.revenue) %></td>
+          <td><%= movie.ageRestriction %></td>
+          <td><%= link_to 'Recensions', recensions_movie_path(movie) %></td>
+          <td><%= link_to 'Participants', participations_movie_path(movie) %></td>
+          <td><%= link_to 'Media', movie_media_path(movie) %></td>
+          <td><%= link_to 'Show', movie %></td>
+          <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+          <td><%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @movies %></div></div>
+
 </div>
-
-<br>
-
+<br />
 <%= link_to 'New Movie', new_movie_path %>

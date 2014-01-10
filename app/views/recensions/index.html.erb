@@ -3,10 +3,10 @@
 <table class="table tablesorter">
   <thead>
     <tr>
-      <th>Movie</th>
+      <th><%= sortable :movie_id %></th>
       <th>Website</th>
-      <th>Time</th>
-      <th>Content</th>
+      <th><%= sortable :time %></th>
+      <th><%= sortable :content %></th>
     </tr>
   </thead>
 
@@ -24,7 +24,7 @@
     <% end %>
   </tbody>
 </table>
-
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @recensions %></div></div>
 <br>
 
 <%= link_to 'New Recension', new_recension_path %>

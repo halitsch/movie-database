@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.order(sort_column(User) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
   # GET /users/1

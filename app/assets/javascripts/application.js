@@ -13,8 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require chartkick
-//= require jquery.tablesorter.min.js
-//= require jquery.tablesorter.pager.js
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
@@ -22,7 +20,9 @@
     var ready;
     ready = function() {
  
-      $("table").tablesorter();
+      $("table") 
+    	.tablesorter({widthFixed: true, widgets: ['zebra']}) 
+    	.tablesorterPager({container: $("#pager")}); 
 
     };
 

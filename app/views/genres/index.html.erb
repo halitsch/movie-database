@@ -3,8 +3,8 @@
 <table class="table tablesorter">
   <thead>
     <tr>
-      <th>Genre</th>
-      <th>Name</th>
+      <th><%= sortable :genre_id %></th>
+      <th><%= sortable :name %></th>
     </tr>
   </thead>
 
@@ -20,6 +20,7 @@
     <% end %>
   </tbody>
 </table>
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @genres %></div></div>
 
 <br>
 

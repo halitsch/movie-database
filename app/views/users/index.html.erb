@@ -3,15 +3,15 @@
 <table class="table tablesorter">
   <thead>
     <tr>
-      <th>User</th>
-      <th>User name</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Gender</th>
-      <th>Dob</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Address</th>
+      <th><%= sortable :user_id %></th>
+      <th><%= sortable :user_name %></th>
+      <th><%= sortable :first_name %></th>
+      <th><%= sortable :last_name %></th>
+      <th><%= sortable :gender %></th>
+      <th><%= sortable :dob %></th>
+      <th><%= sortable :email %></th>
+      <th><%= sortable :phone %></th>
+      <th><%= sortable :address %></th>
     </tr>
   </thead>
 
@@ -35,6 +35,7 @@
     <% end %>
   </tbody>
 </table>
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @users %></div></div>
 
 <br>
 

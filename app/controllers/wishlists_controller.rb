@@ -4,7 +4,7 @@ class WishlistsController < ApplicationController
   # GET /wishlists
   # GET /wishlists.json
   def index
-    @wishlists = Wishlist.all
+    @wishlists = Wishlist.order(sort_column(Wishlist) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
   # GET /wishlists/1

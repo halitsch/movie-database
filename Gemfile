@@ -12,6 +12,9 @@ gem 'chartkick'
 # Workaround for composite keys
 gem "composite_primary_keys", "~> 6.0.1"
 
+# Gem for pagination.
+gem "will_paginate"
+
 # Gem for upload on Heroku
 gem 'rails_12factor', group: :production
 

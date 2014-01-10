@@ -4,7 +4,7 @@ class RecensionsController < ApplicationController
   # GET /recensions
   # GET /recensions.json
   def index
-    @recensions = Recension.all
+    @recensions = Recension.order(sort_column(Recension) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
   # GET /recensions/1

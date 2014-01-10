@@ -3,10 +3,10 @@
 <table class="table tablesorter">
   <thead>
     <tr>
-      <th>Wis</th>
-      <th>Wis date</th>
-      <th>User</th>
-      <th>Movie</th>
+      <th><%= sortable :wis_id %></th>
+      <th><%= sortable :wis_date %></th>
+      <th><%= sortable :user_id %></th>
+      <th><%= sortable :movie_id %></th>
     </tr>
   </thead>
 
@@ -24,6 +24,7 @@
     <% end %>
   </tbody>
 </table>
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @wishlists %></div></div>
 
 <br>
 

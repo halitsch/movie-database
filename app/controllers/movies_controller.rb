@@ -10,7 +10,8 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    # index column and sort direction are private methods defined in application controller which sanitize the parameters.
+    @movies = Movie.order(sort_column(Movie) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
   # GET /movies/1

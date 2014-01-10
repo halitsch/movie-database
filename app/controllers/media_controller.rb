@@ -5,7 +5,7 @@ class MediaController < ApplicationController
   # GET /media.json
   def index
     if params[:movie_id].blank?
-      @media = Medium.all
+      @media = Medium.order(sort_column(Medium) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
     else
       @media = Medium.where('movie_id = ?', params[:movie_id])
     end

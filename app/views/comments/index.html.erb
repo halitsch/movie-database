@@ -3,18 +3,18 @@
 <table class="table tablesorter">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Movie</th>
-      <th>Time</th>
-      <th>Content</th>
+      <th><%= sortable :user_id %></th>
+      <th><%= sortable :movie_id %></th>
+      <th><%= sortable :time %></th>
+      <th><%= sortable :content %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.user_id %></td>
-        <td><%= comment.movie.title %></td>
+        <td><%= link_to comment.user_id, comment.user %></td>
+        <td><%= link_to comment.movie.title, comment.movie %></td>
         <td><%= comment.time %></td>
         <td><%= comment.content %></td>
         <td><%= link_to 'Show', comment %></td>
@@ -24,6 +24,7 @@
     <% end %>
   </tbody>
 </table>
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @comments %></div></div>
 
 <br>
 

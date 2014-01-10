@@ -4,7 +4,7 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = Rating.all
+    @ratings = Rating.order(sort_column(Rating) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
   # GET /ratings/1

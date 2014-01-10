@@ -40,6 +40,9 @@ class AnalyticsController < ApplicationController
     get_genre_list
   end
 
+  def charts
+  end
+
   def most_commented
     @movies = Movie.joins(:comment).
               select('movie.movie_id, movie.title, count(movie.movie_id) as count').

@@ -3,10 +3,10 @@
 <table class="table tablesorter">
   <thead>
     <tr>
-      <th>Med</th>
-      <th>Med type</th>
-      <th>Movie</th>
-      <th>Medium set</th>
+      <th><%= sortable :med_id %></th>
+      <th><%= sortable :med_type %></th>
+      <th><%= sortable :movie_id %></th>
+      <th><%= sortable :medium_set_id %></th>
     </tr>
   </thead>
 
@@ -24,6 +24,7 @@
     <% end %>
   </tbody>
 </table>
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @media %></div></div>
 
 <br>
 

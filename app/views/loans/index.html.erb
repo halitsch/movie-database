@@ -3,12 +3,12 @@
 <table class="table tablesorter">
   <thead>
     <tr>
-      <th>Loa</th>
-      <th>Borrow date</th>
-      <th>Sup return date</th>
-      <th>Return date</th>
-      <th>Wis</th>
-      <th>Med</th>
+      <th><%= sortable :loa_id %></th>
+      <th><%= sortable :borrrow_date %></th>
+      <th><%= sortable :sup_return_date %></th>
+      <th><%= sortable :return_date %></th>
+      <th><%= sortable :wis_id %></th>
+      <th><%= sortable :med_id %></th>
     </tr>
   </thead>
 
@@ -28,6 +28,7 @@
     <% end %>
   </tbody>
 </table>
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @loans %></div></div>
 
 <br>
 

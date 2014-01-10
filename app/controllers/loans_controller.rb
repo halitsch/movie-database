@@ -7,7 +7,7 @@ class LoansController < ApplicationController
     if params[:filter] == 'after'
       @loans = Loan.where('return_date is null and sup_return_date < ?', Time.now) 
     else
-      @loans = Loan.all
+      @loans = Loan.order(sort_column(Loan) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
     end
   end
 

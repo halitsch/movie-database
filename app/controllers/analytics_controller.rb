@@ -57,7 +57,7 @@ class AnalyticsController < ApplicationController
     
     @month_and_wishes = Array.new
     wishlist_by_month.each do |date, wish| 
-      @month_and_wishes << [date.strftime('%B %Y'), wish.length]
+      @month_and_wishes << [date, wish.length]
     end
 
     # Get array of months and number of ratings in that month

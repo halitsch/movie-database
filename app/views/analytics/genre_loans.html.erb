@@ -2,7 +2,6 @@
 <div class="panel-heading"><h2>The list of genres which are included in the most loans</h2></div>
 
 <%= render 'genres_list' %>
-<%= @movies_count_and_genre.inspect %>
     <div class="col-md-8">
       <table class="table tablesorter">
         <thead>
@@ -13,15 +12,15 @@
           </tr>
         </thead>
         <tbody>
-        <% @movies_count_and_genre.each do |key, value| %>
+        <% @movies_count_and_genre.each do |movie| %>
             <tr>
-              <td><%= key %></td>
+              <td><%= movie[0] %></td>
               <td>
-                <% value[:genres].each do |genre|  %>
+                <% movie[2].each do |genre|  %>
                 <%= genre.name %>
                 <% end  %>
               </td>
-              <td><%= value[:count] %></td>
+              <td><%= movie[1] %></td>
             </tr>
           <% end %>
         </tbody>

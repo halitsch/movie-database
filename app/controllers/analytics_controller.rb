@@ -17,54 +17,53 @@ class AnalyticsController < ApplicationController
   end
 
   def genre_loans
-    @movies_count_and_genre = Hash.new
-
-    @movies = Movie.joins(:loan).
+    movies = Movie.joins(:loan).
               select('movie.movie_id, movie.title, count(movie.movie_id) as count').
-              group("movie.movie_id")
-    
-    @movies.each do |mov|
-        @movies_count_and_genre[mov.title] = {count: mov.count, genres: mov.genre }
+              group("movie.movie_id").order('count DESC')
+
+    @movies_count_and_genre = Array.new
+
+    if params[:genre].blank?
+      movies.each do |mov|
+        @movies_count_and_genre << [mov.title, mov.count, mov.genre]
+      end
+    else
+      movies.each do |mov|
+        if mov.genre.inspect.include?(params[:genre])
+          @movies_count_and_genre << [mov.title, mov.count, mov.genre]
+        end
+      end
     end
-
-#   unless params[:genre].blank?
-#
-#      if params[:genre].include? mov.genre
-#      @movies_count_and_genre[mov.title] = {count: mov.count, genres: mov.genre }
-#      end
-
-#      @movies_count_and_genre.keep_if { |k,v| v[:genres].name.include?(params[:genre]) }
-#      @movies_count_and_genre = @movies_count_and_genre.keep_if { |k,v| params[:genre].include?(v[:genres].name) }
-#    end
-
+    
     get_genre_list
   end
 
   def charts
+    # Get array of genres and number of movies of each genre
+    genres_and_movies = Genre.joins(:movie).
+                        select('genre.genre_id, genre.name as name, count(*) as count').
+                        group('genre.genre_id')
+
+    @genre_and_movie_count = Array.new
+    genres_and_movies.each do |genre|
+      @genre_and_movie_count << [genre.name, genre.count]
+    end    
+
     # Get array of months and number of wishes in that month
     wishlist_by_month = Wishlist.all.group_by { |w| w.wis_date.beginning_of_month }
     
     @month_and_wishes = Array.new
     wishlist_by_month.each do |date, wish| 
-      @month_and_wishes << [date, wish.length]
+      @month_and_wishes << [date.strftime('%B %Y'), wish.length]
     end
+
     # Get array of months and number of ratings in that month
     ratings_by_month = Rating.all.group_by { |r| r.time.beginning_of_month }
     
     @month_and_ratings = Array.new
     ratings_by_month.each do |date, ratings| 
-      @month_and_ratings << [date, ratings.length]
+      @month_and_ratings << [date.strftime('%B %Y'), ratings.length]
     end
-
-
-    #comments_by_month = Comment.all.group_by { |c| c.time.beginning_of_month }
-    #
-    #@month_and_comments = Array.new
-    #comments_by_month.each do |date, comments| 
-    #  @month_and_comments << [date, comments.length]
-    #end
-
-
 
   end
 

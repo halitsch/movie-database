@@ -24,7 +24,7 @@
     <% end %>
   </tbody>
 </table>
-<div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @media %></div></div>
+<div class="row"><div class="col-md-4 col-md-offset-5"><%= params[:movie_id].blank? ? (will_paginate @media) : (p '') %></div></div>
 
 <br>
 

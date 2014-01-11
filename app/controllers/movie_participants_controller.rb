@@ -4,7 +4,7 @@ class MovieParticipantsController < ApplicationController
   # GET /movie_participants
   # GET /movie_participants.json
   def index
-    @movie_participants = MovieParticipant.all
+    @movie_participants = MovieParticipant.paginate(per_page: 10, page: params[:page])
   end
 
   # GET /movie_participants/1

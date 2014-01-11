@@ -1,8 +1,6 @@
 <div class="panel panel-default">
 <div class="panel-heading"><h2>Listing movie participants</h2></div>
 <table class="table tablesorter">
-
-<table>
   <thead>
     <tr>
       <th>Participant</th>
@@ -26,7 +24,7 @@
     <% end %>
   </tbody>
 </table>
-
+ <div class="row"><div class="col-md-4 col-md-offset-5"><%= will_paginate @movie_participants %></div></div>
 <br>
 
 <%= link_to 'New Movie participant', new_movie_participant_path %>

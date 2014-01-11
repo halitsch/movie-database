@@ -14,7 +14,7 @@
     <% @recensions.each do |recension| %>
       <tr>
         <td><%= recension.movie_id %></td>
-        <td><%= recension.website_id %></td>
+        <td><%= link_to recension.website_id, website_path(recension.website_id) %></td>
         <td><%= recension.time %></td>
         <td><%= recension.content %></td>
         <td><%= link_to 'Show', recension %></td>

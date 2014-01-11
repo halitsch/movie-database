@@ -81,13 +81,15 @@
 
 <p>
   <strong>5 movie ratings:</strong>
-  <% @user_ratings.slice(5,5).each do |u, r| %>
-    <p>
-      First name: <%= u.first_name %><br />
-      Last name: <%= u.last_name %><br />
-      User name: <%= u.user_name %><br />
-      Rating: <%= r.ratingValue %><br />
-    </p>
+  <% if @user_ratings.nil? %>
+    <% @user_ratings.slice(5,5).each do |u, r| %>
+      <p>
+        First name: <%= u.first_name %><br />
+        Last name: <%= u.last_name %><br />
+        User name: <%= u.user_name %><br />
+        Rating: <%= r.ratingValue %><br />
+      </p>
+    <% end %>
   <% end %>
   <%= link_to 'All ratings', ratings_path(@movie) %>
 </p>

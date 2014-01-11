@@ -6,18 +6,18 @@ class AnalyticsController < ApplicationController
       @movies = Movie.joins(:rating).
                 select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').
                 group("movie.movie_id").
-                order("count DESC")
+                order("average DESC").paginate(per_page: 10, page: params[:page])
     else
       @movies = Movie.joins(:genre).
                 where('genre.name = ?', params[:genre]).joins(:rating).
                 select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').
                 group("movie.movie_id").
-                order("average")
+                order("average DESC").paginate(per_page: 10, page: params[:page])
     end
     
     get_genre_list
   end
-
+=begin
   def genre_loans
     movies = Movie.joins(:loan).
               select('movie.movie_id, movie.title, count(movie.movie_id) as count').
@@ -39,6 +39,7 @@ class AnalyticsController < ApplicationController
     
     get_genre_list
   end
+=end
 
   def charts
     # Get array of genres and number of movies of each genre

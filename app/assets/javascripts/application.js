@@ -17,15 +17,3 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-
-    var ready;
-    ready = function() {
- 
-      $("table") 
-    	.tablesorter({widthFixed: true, widgets: ['zebra']}) 
-    	.tablesorterPager({container: $("#pager")}); 
-
-    };
-
-    $(document).ready(ready);
-    $(document).on('page:load', ready);

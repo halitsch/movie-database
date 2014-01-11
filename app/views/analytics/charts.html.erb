@@ -1,1 +1,10 @@
-<%= line_chart @month_and_wishes %>
+<h1>Examples of charts</h1>
+
+<h2>Number of user wishes in month</h2>
+<div class="row">
+	<%= line_chart @month_and_wishes %>
+</div>
+<h2>Number of ratings in month</h2>
+<div class="row">
+	<%= column_chart @month_and_ratings %>
+</div>

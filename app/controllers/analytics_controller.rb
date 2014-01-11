@@ -41,13 +41,31 @@ class AnalyticsController < ApplicationController
   end
 
   def charts
-    group = Wishlist.all.group_by { |m| m.wis_date.beginning_of_month }
-    group = group.each { |date, wish| [date, wish.length] }
-
+    # Get array of months and number of wishes in that month
+    wishlist_by_month = Wishlist.all.group_by { |w| w.wis_date.beginning_of_month }
+    
     @month_and_wishes = Array.new
-    group.each do |date, wishlists|
-     @month_and_wishes << [date.strftime('%B %Y'), wishlists.length]
+    wishlist_by_month.each do |date, wish| 
+      @month_and_wishes << [date, wish.length]
     end
+    # Get array of months and number of ratings in that month
+    ratings_by_month = Rating.all.group_by { |r| r.time.beginning_of_month }
+    
+    @month_and_ratings = Array.new
+    ratings_by_month.each do |date, ratings| 
+      @month_and_ratings << [date, ratings.length]
+    end
+
+
+    #comments_by_month = Comment.all.group_by { |c| c.time.beginning_of_month }
+    #
+    #@month_and_comments = Array.new
+    #comments_by_month.each do |date, comments| 
+    #  @month_and_comments << [date, comments.length]
+    #end
+
+
+
   end
 
   def most_commented

@@ -5,12 +5,14 @@ class AnalyticsController < ApplicationController
     if params[:genre].blank?
       @movies = Movie.joins(:rating).
                 select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').
-                group("movie.movie_id")
+                group("movie.movie_id").
+                order("count DESC")
     else
       @movies = Movie.joins(:genre).
                 where('genre.name = ?', params[:genre]).joins(:rating).
                 select('movie.movie_id, movie.title, count(movie.movie_id) as count, avg(rating.ratingValue) as average').
-                group("movie.movie_id")
+                group("movie.movie_id").
+                order("average")
     end
     
     get_genre_list
@@ -89,7 +91,10 @@ class AnalyticsController < ApplicationController
   # Returns pair of genre name and count of movies of that genre
   # It's in pure SQL and not active record approach because I had this query writen before. 
   def movies_genres_count
-    @genres = Movie.find_by_sql('select g.name, count(*) as count from genre g left join classification c on g.genre_id = c.genre_id left join movie m on c.movie_id = m.movie_id group by g.name')
+    @genres = Genre.joins(:movie).
+                        select('genre.genre_id, genre.name as name, count(*) as count').
+                        group('genre.genre_id').
+                        order('count DESC')
   end
 private
   

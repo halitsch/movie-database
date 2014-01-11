@@ -5,7 +5,7 @@ class LoansController < ApplicationController
   # GET /loans.json
   def index
     if params[:filter] == 'after'
-      @loans = Loan.where('return_date is null and sup_return_date < ?', Time.now) 
+      @loans = Loan.where('return_date is null and sup_return_date < ?', Time.now).paginate(per_page: 10, page: params[:page])
     else
       @loans = Loan.order(sort_column(Loan) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
     end

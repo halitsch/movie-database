@@ -3,11 +3,19 @@ class UsersController < ApplicationController
 
   # Retuns array of user details and aggregated number of wishes
   def wishes_count
-    @users = User.joins(:wishlist).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
+    @users = User.joins(:wishlist).
+                  select('user_name, first_name, last_name, count(*) as count').
+                  group('user.user_id').
+                  order('count DESC').
+                  paginate(per_page: 10, page: params[:page])
   end
 
   def loans_count
-    @users = User.joins(:loan).select('user_name, first_name, last_name, count(*) as count').group('user.user_id').order('count DESC')
+    @users = User.joins(:loan).
+                  select('user_name, first_name, last_name, count(*) as count').
+                  group('user.user_id').
+                  order('count DESC').
+                  paginate(per_page: 10, page: params[:page])
   end
   
   # GET /users

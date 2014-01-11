@@ -1,119 +1,105 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <h1><%= @movie.title %></h1>
+    </p>
+
+    <p>
+      <strong>Release date (MM/DD/YYYY):</strong>
+      <%= @movie.release_month.to_s + "/" + @movie.release_day.to_s + "/" + @movie.release_year.to_s %>
+    </p>
+
+    <p>
+      <strong>Duration:</strong>
+      <%= @movie.duration %>
+    </p>
+
+    <p>
+      <strong>Budget:</strong>
+      <%= number_with_delimiter(@movie.budget) %>
+    </p>
+
+    <p>
+      <strong>Revenue:</strong>
+      <%= number_with_delimiter(@movie.revenue) %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @movie.description %>
+    </p>
+
+    <p>
+      <strong>Agerestriction:</strong>
+      <%= @movie.ageRestriction %>
+    </p>
+
+    <p>
+      <strong>Movie genres:</strong>
+          <% @genres.each do |g| %>
+            <%= g.name %>
+          <% end %>
+    </p>
+
+    <p>
+      <strong>Average rating</strong>
+      <%= @avg_rating %>
+    </p>
+    
+  </div>
+  <div class="col-md-6">
+    <strong style="margin-top: 55px; display: block;">Movie participants:</strong>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actor</th>
+        <th>Writer</th>
+        <th>Director</th>
+        <th>Composer</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @movie_participants.each do |contribution, movie_participant| %>
+        <tr>
+          <td><%= movie_participant.name %></td>
+          <td><%= (contribution.is_actor ? "&#10004;".html_safe : "") %></td>
+          <td><%= (contribution.is_writer ? "&#10004;".html_safe : "") %></td>
+          <td><%= (contribution.is_director ? "&#10004;".html_safe : "") %></td>
+          <td><%= (contribution.is_composer ? "&#10004;".html_safe : "") %></td>
+          <td><%= link_to 'Show', movie_participant %></td>
+          <td><% link_to 'Edit', edit_movie_participant_path(movie_participant) %></td>
+          <td><% link_to 'Delete', movie_participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  </div>
+</div>
 
 <p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
+  <strong>5 movie ratings:</strong>
+  <% @user_ratings.slice(5,5).each do |u, r| %>
+    <p>
+      First name: <%= u.first_name %><br />
+      Last name: <%= u.last_name %><br />
+      User name: <%= u.user_name %><br />
+      Rating: <%= r.ratingValue %><br />
+    </p>
+  <% end %>
+  <%= link_to 'All ratings', ratings_path(@movie) %>
 </p>
 
 <p>
-  <strong>Release day:</strong>
-  <%= @movie.release_day %>
-</p>
-
-<p>
-  <strong>Release month:</strong>
-  <%= @movie.release_month %>
-</p>
-
-<p>
-  <strong>Release year:</strong>
-  <%= @movie.release_year %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @movie.duration %>
-</p>
-
-<p>
-  <strong>Budget:</strong>
-  <%= number_with_delimiter(@movie.budget) %>
-</p>
-
-<p>
-  <strong>Revenue:</strong>
-  <%= number_with_delimiter(@movie.revenue) %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
-
-<p>
-  <strong>Agerestriction:</strong>
-  <%= @movie.ageRestriction %>
-</p>
-
-<p>
-  <strong>Comments to this movie (from here on, are examples of joins):</strong>
+  <strong>5 comments to this movie:</strong>
   <% @comments.each do |c| %>
     <p>
       User id: <%= c.user_id %>
     </p>
     <p>
       Comment: <%= c.content %>
-    </p>
-  <% end %>
-</p>
-
-<p>
-  <strong>Movie genres:</strong>
-    <p>
-      <% @genres.each do |g| %>
-        <%= g.name %>
-      <% end %>
-    </p>
-  
-</p>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Actor</th>
-      <th>Writer</th>
-      <th>Director</th>
-      <th>Composer</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movie_participants.each do |contribution, movie_participant| %>
-      <tr>
-        <td><%= movie_participant.name %></td>
-        <td><%= (contribution.is_actor ? "&#10004;".html_safe : "") %></td>
-        <td><%= (contribution.is_writer ? "&#10004;".html_safe : "") %></td>
-        <td><%= (contribution.is_director ? "&#10004;".html_safe : "") %></td>
-        <td><%= (contribution.is_composer ? "&#10004;".html_safe : "") %></td>
-        <td><%= link_to 'Show', movie_participant %></td>
-        <td><% link_to 'Edit', edit_movie_participant_path(movie_participant) %></td>
-        <td><% link_to 'Delete', movie_participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p>
-  <strong>Movie ratings:</strong>
-  <% @user_ratings.each do |u, r| %>
-    <p>
-      First name: <%= u.first_name %><br />
-      Last name: <%= u.last_name %><br />
-      User name: <%= u.user_name %><br />
-      Rating: <%= r.ratingValue %><br />
-    </p>
-  <% end %>
-</p>
-
-<p>
-  <strong>Movie pariticipation:</strong>
-  <% @user_ratings.each do |u, r| %>
-    <p>
-      First name: <%= u.first_name %><br />
-      Last name: <%= u.last_name %><br />
-      User name: <%= u.user_name %><br />
-      Rating: <%= r.ratingValue %><br />
     </p>
   <% end %>
 </p>

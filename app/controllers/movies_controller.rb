@@ -18,12 +18,14 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     # variables for comments and genres to view
-    @comments = @movie.comment
+    @comments = @movie.comment.take(5)
     @genres = @movie.genre
     # 2 dimensional array of users and the users rating
-    ratings = @movie.rating
+    @avg_rating = @movie.rating.average('ratingValue')
+
+    @ratings = @movie.rating
     user_for_rating = @movie.user
-    @user_ratings = user_for_rating.zip(ratings)
+    @user_ratings = user_for_rating.zip(@ratings)
 
     # variables of movie participants details and their contribution to the movie
     contribution = @movie.contribution

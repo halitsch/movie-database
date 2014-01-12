@@ -4,7 +4,11 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
+    if params[:format].blank?
     @ratings = Rating.order(sort_column(Rating) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    else
+    @ratings = Rating.where('movie_id = ?', params[:format]).order(sort_column(Rating) + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    end
   end
 
   # GET /ratings/1

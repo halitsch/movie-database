@@ -1,5 +1,5 @@
 module ApplicationHelper
- # Generates sorting ling for table column.
+ # Generates sorting link for table column.
  def sortable(column, title = nil)
     # If title is missing, then the title is generated from the column name.
     title ||= column.to_s.titleize

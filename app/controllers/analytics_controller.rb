@@ -1,6 +1,6 @@
 class AnalyticsController < ApplicationController
 
-  #returns pair of movie and average rating for that movie
+  # Returns pair of movie and average rating for that movie.
   def best_rated
     if params[:genre].blank?
       @movies = Movie.joins(:rating).
@@ -42,7 +42,7 @@ class AnalyticsController < ApplicationController
 =end
 
   def charts
-    # Get array of genres and number of movies of each genre
+    # Get array of genres and number of movies of each genre.
     genres_and_movies = Genre.joins(:movie).
                         select('genre.genre_id, genre.name as name, count(*) as count').
                         group('genre.genre_id')
@@ -52,7 +52,7 @@ class AnalyticsController < ApplicationController
       @genre_and_movie_count << [genre.name, genre.count]
     end    
 
-    # Get array of months and number of wishes in that month
+    # Get array of months and number of wishes in that month.
     wishlist_by_month = Wishlist.all.group_by { |w| w.wis_date.beginning_of_month }
     
     @month_and_wishes = Array.new
@@ -70,6 +70,7 @@ class AnalyticsController < ApplicationController
 
   end
 
+  # Get top 10 most commmented movies.
   def most_commented
     @movies = Movie.joins(:comment).
               select('movie.movie_id, movie.title, count(movie.movie_id) as count').
@@ -77,6 +78,7 @@ class AnalyticsController < ApplicationController
               order('count DESC').take(10)
     end
 
+  # Get top 10 most active users by comments and by ratings.
   def most_active
     @users_comments = User.joins(:comment).
                       select('user.user_id, user.user_name, user.first_name, user.last_name, count(user.user_id) as count').
@@ -99,6 +101,7 @@ class AnalyticsController < ApplicationController
   end
 private
   
+  # Select list of all genres.
   def get_genre_list
     @genre_names = Genre.select('name')
   end

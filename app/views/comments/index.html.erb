@@ -16,7 +16,7 @@
         <td><%= link_to comment.user_id, comment.user %></td>
         <td><%= link_to comment.movie.title, comment.movie %></td>
         <td><%= comment.time %></td>
-        <td><%= comment.content %></td>
+        <td><p class="minimize"><%= comment.content %></p></td>
         <td><%= link_to 'Show', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
         <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -10,7 +10,7 @@
 
     <div class="row">
       <div class="col-md-7">
-      <h2>Latest 3 comments</h2>
+      <h2>Latest 5 comments</h2>
       <table class="table">
         <thead>
           <tr>
@@ -28,7 +28,7 @@
               <td><%= link_to comment.user.first_name + ' "' + comment.user.user_name + '" ' + comment.user.last_name, comment.user %></td>
               <td><%= link_to comment.movie.title, comment.movie %></td>
               <td><%= time_ago_in_words(comment.time) + " ago" %></td>
-              <td><%= comment.content %></td>
+              <td><p class="minimize"><%= comment.content %></p></td>
               <td><%= link_to 'Show', comment %></td>
             </tr>
           <% end %>

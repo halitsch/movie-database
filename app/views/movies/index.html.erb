@@ -10,7 +10,7 @@
         <th><%= sortable :duration %></th>
         <th><%= sortable :budget %></th>
         <th><%= sortable :revenue %></th>
-        <th><%= sortable :agerestriction %></th>
+        <th><%= sortable :agerestriction, "Age Restriction" %></th>
       </tr>
     </thead>
 
@@ -21,9 +21,9 @@
           <td><%= movie.release_day %></td>
           <td><%= movie.release_month %></td>
           <td><%= movie.release_year %></td>
-          <td><%= movie.duration %></td>
-          <td><%= number_with_delimiter(movie.budget) %></td>
-          <td><%= number_with_delimiter(movie.revenue) %></td>
+          <td><%= (movie.duration.to_s + "&nbsp;min").html_safe %></td>
+          <td><%= ("&euro;&nbsp;" + number_with_delimiter(movie.budget).to_s).html_safe %></td>
+          <td><%= ("&euro;&nbsp;" + number_with_delimiter(movie.revenue).to_s).html_safe %></td>
           <td><%= movie.ageRestriction %></td>
           <td><%= link_to 'Recensions', recensions_movie_path(movie) %></td>
           <td><%= link_to 'Participants', participations_movie_path(movie) %></td>

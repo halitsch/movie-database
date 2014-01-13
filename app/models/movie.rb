@@ -11,4 +11,12 @@ class Movie < ActiveRecord::Base
 	has_many :website, through: :recension
 	has_many :wishlist
 	has_many :loan, through: :wishlist
+
+	def self.search(search)
+	  if search
+	    where('movie.title LIKE ?', "%#{search}%")
+	  else
+	    scoped
+	  end
+	end
 end

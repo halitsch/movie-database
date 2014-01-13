@@ -6,7 +6,7 @@ module ApplicationHelper
     # If sort direction in parameter is set to asc, then change it to desc.
     direction = params[:direction] == "asc" ? "desc" : "asc"
     # Generate the link.
-    link_to title, sort: column, direction: direction
+    link_to title, params.merge(sort: column, direction: direction, page: nil)
  end
 
  # Verify if user is loged in.

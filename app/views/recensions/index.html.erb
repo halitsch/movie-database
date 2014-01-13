@@ -16,7 +16,7 @@
         <td><%= recension.movie_id %></td>
         <td><%= link_to recension.website_id, website_path(recension.website_id) %></td>
         <td><%= recension.time %></td>
-        <td><%= recension.content %></td>
+        <td><p class="minimize"><%= recension.content %></p></td>
         <td><%= link_to 'Show', recension %></td>
         <td><%= link_to 'Edit', edit_recension_path(recension) %></td>
         <td><%= link_to 'Delete', recension, method: :delete, data: { confirm: 'Are you sure?' } %></td>

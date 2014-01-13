@@ -22,7 +22,7 @@
                   <%= genre.name %>
                   <% end %>
               </td>
-              <td><%= movie.average %></td>
+              <td><%= movie.average.round(2) %></td>
               <td><%= movie.count %></td>
             </tr>
           <% end %>

@@ -19,7 +19,7 @@
         <td><%= wish.movie_id %></td>
         <td><%= link_to 'Show', wish %></td>
         <td><%= link_to 'Edit', edit_wishlist_path(wish) %></td>
-        <td><%= link_to 'Destroy', wish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', wish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

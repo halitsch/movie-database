@@ -44,7 +44,7 @@
 
     <p>
       <strong>Average rating</strong>
-      <%= @avg_rating %>
+      <%= @avg_rating.nil? ? '' : @avg_rating.round(2) %>
     </p>
     <p>
       <%= link_to 'All ratings for this movie', ratings_path(@movie) %>
